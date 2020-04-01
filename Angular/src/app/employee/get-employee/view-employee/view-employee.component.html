@@ -1,0 +1,15 @@
+<td class="hidden">{{e.id}}</td>
+<td>{{e.firstName}}</td>
+<td>{{e.middleName}}</td>
+<td>{{e.lastName}}</td>
+<td>{{e.email}}</td>
+<td>{{e.phone}}</td>
+<td>{{e.role}}</td>
+<td>{{e.address}}</td>
+<td>{{e.customer}}</td>
+<td> <button class="btn btn-success" (click)="editEmployee(e.id)"> Edit</button>
+<button class="btn btn-danger" (click)="deleteEmployee(e.id)"> Delete</button>
+</td>
+<td><ng-content></ng-content></td>
+
+

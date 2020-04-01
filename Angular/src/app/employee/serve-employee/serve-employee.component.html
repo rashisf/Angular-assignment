@@ -1,0 +1,21 @@
+<div  *ngIf="dataChk;else elseBlock" class="user-container">
+    <h2 style="margin: auto"> User Details</h2>
+    
+    <app-get-employee 
+    [employees]="employees" 
+    [roles] ="roles"
+    [customers]="customers"
+    (onDelete)="deleteEmployee($event)"
+    (onEdit)="getRolesAndCustomers()"
+    (onSave)="updateEmployee($event)"
+    ></app-get-employee>
+    
+    <div class="text-center">
+    <button class="btn btn-danger" style="width:100px" (click)="addEmployee()"> Add User</button>
+</div>
+
+  </div>
+  <ng-template #elseBlock>
+
+<h1>{{errorMessage}}</h1>
+  </ng-template>
