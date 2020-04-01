@@ -1,0 +1,37 @@
+<table class="table table-striped" style="table-layout: fixed;" >
+    <thead>
+        <tr>
+            <th *ngFor="let h of headings">{{h}}</th>
+            <th>Operations</th>
+            <th>Multiple Delete</th> 
+        </tr>
+    </thead>
+    <tbody>
+
+        <ng-container *ngFor="let e of employees">
+
+            <tr *ngIf="!editable || (editable && !(editIndex===e.id))" id="e.id" 
+            app-view-employee 
+            [employee]="e"
+            (onDelete)="deleteEmitter($event)" 
+            (onEdit)="editEmitter($event)">
+                <input type="checkbox" name="deleteCheck" (change)="checked(e.id,$event)">
+            </tr>
+
+            <tr *ngIf="editable && editIndex===e.id" id="e.id" 
+            app-update-employee 
+            [employee]="e" 
+            [roles]="roles"
+            [customers]="customers" 
+            (onCancel)="cancelEmitter()" 
+            (onSave)="saveEmitter($event)">
+                <input type="checkbox" name="deleteCheck" (change)="checked(e.id,$event)">
+            </tr>
+
+        </ng-container>
+    </tbody>
+</table>
+<div class="text-center">
+    <button class="btn  btn-primary" (click)="multiDelete()">Multiple Delete</button>
+</div>
+<br>

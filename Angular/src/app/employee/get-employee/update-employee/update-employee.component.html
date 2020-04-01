@@ -1,0 +1,47 @@
+<ng-container [formGroup]="saveForm">
+    <td class="hidden"> <input type="number" formControlName="id"></td>
+    <td>
+        <input type="text" formControlName="firstName" >
+        <small class="text-danger" *ngIf="firstName.invalid && firstName.touched">Invalid firstName</small>
+    </td>
+    <td>
+        <input type="text"  formControlName="middleName" >
+        <small class="text-danger" *ngIf="middleName.invalid && middleName.touched">Invalid Middle Name</small>
+    </td>
+    <td>
+        <input type="text"  formControlName="lastName" >
+        <small class="text-danger" *ngIf="lastName.invalid && lastName.touched">Invalid Last Name</small>
+    </td>
+    <td>
+        <input type="text" formControlName="email" >
+        <small class="text-danger" *ngIf="email.invalid && email.touched">Invalid email</small>
+    </td>
+    <td>
+        <input type="text" formControlName="phone" >
+        <small class="text-danger" *ngIf="phone.invalid && phone.touched">Invalid Phone</small>
+    </td>
+    <td> 
+        <select class="custom-select" formControlName="role" >
+            <option [value]="null" disabled> Select role</option>
+            <option *ngFor="let r of roles" [value]="r.role_id">{{r.name}}</option>
+        </select>
+        <small class="text-danger" *ngIf="role.invalid && role.touched">Select role</small>
+    </td>
+    <td>
+        <input type="text" formControlName="address" >
+        <small class="text-danger" *ngIf="address.invalid && address.touched">Invalid Address</small>
+   </td>
+    <td>
+        <select class="custom-select" formControlName="customer"  >
+            <option [value]="null" disabled> Select customer</option>
+            <option *ngFor="let c of customers" [value]="c.c_id">{{c.name}}</option>
+        </select>
+        <small class="text-danger" *ngIf="customer.invalid && customer.touched">Select customer</small>
+    </td>
+    <td> 
+        <button class="btn btn-success" (click)="saveEmployee(e.id)"> Save</button>
+
+        <button class="btn btn-danger" (click)="cancelEmployee(e.id)"> Cancel</button>
+    </td>
+    <td><ng-content></ng-content></td>
+</ng-container>
